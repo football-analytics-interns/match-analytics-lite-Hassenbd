@@ -1,0 +1,34 @@
+<div class="table-responsive">
+  <table class="table admin-table">
+    <thead>
+      <tr>
+        <th>IDENTIFIER</th>
+        <th>NAME</th>
+        <th>TEAM</th>
+        <th>POSITION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td class="fw-bold identifier-cell">{{ player.id }}</td>
+        <td class="name-cell">{{ player.name }} </td>
+        <td class="name-cell">
+          {{ player.team }}
+        </td>
+        <td class="name-cell">
+          {{player.position}}
+        </td>
+
+      </tr>
+      <tr *ngIf="players.length === 0">
+        <td colspan="5" class="text-center py-4 no-results">
+          <div class="no-data-found">
+            Empty data
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+

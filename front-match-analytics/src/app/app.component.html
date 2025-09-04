@@ -1,0 +1,46 @@
+<div class="container mt-4">
+
+  <!-- Player Table -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+      <h4>Players</h4>
+    </div>
+    <div class="card-body">
+      <app-player-table></app-player-table>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="row">
+
+    <!-- Chart 1 -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h5>Team 1</h5>
+        </div>
+        <div class="card-body">
+          <app-chart
+            [chartId]="'chart1'"
+        ></app-chart>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart 2 -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h5>Team 2</h5>
+        </div>
+        <div class="card-body">
+          <app-chart
+            [chartId]="'chart2'"
+           ></app-chart>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
