@@ -32,8 +32,7 @@ export class PlayerTableComponent implements OnInit{
         this.loading = false;
       },
       error: (err) => {
-        console.error('Erreur API', err);
-        this.errorMessage = 'Impossible de charger les joueurs.';
+        this.errorMessage = 'Error APi : Cannot get players';
         this.loading = false;
       }
     });

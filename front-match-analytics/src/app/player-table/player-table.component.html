@@ -2,37 +2,41 @@
   <table class="table admin-table">
     <thead>
       <tr>
-        <th>IDENTIFIER</th>
-        <th>NAME</th>
-        <th>GOALS</th>
-        <th>ASSISTS</th>
+        <th>#</th>
+        <th>Name</th>
+        <th>Goals</th>
+        <th>Assists</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <div *ngIf="loading">Chargement...</div>
-          <div *ngIf="errorMessage">{{ errorMessage }}</div>
-      </tr>
-      <tr *ngFor="let player of players">
-        <td class="fw-bold identifier-cell">{{ player.playerId }}</td>
-        <td class="name-cell">{{ player.playerName }} </td>
-        <td class="name-cell">
-          {{ player.goals }}
-        </td>
-        <td class="name-cell">
-          {{player.assists}}
-        </td>
 
-      </tr>
-      <tr *ngIf="players.length === 0">
-        <td colspan="5" class="text-center py-4 no-results">
-          <div class="no-data-found">
-            Empty data
-          </div>
+      <tr *ngIf="loading">
+        <td colspan="4" class="text-center py-4">
+          <span class="text-muted">Loading player statistics...</span>
         </td>
+      </tr>
 
+
+      <tr *ngIf="!loading && errorMessage">
+        <td colspan="4" class="text-center text-danger py-4">
+          {{ errorMessage }}
+        </td>
+      </tr>
+
+
+      <tr *ngFor="let player of players; let i = index" >
+        <td class="fw-bold identifier-cell">{{ i + 1 }}</td>
+        <td class="name-cell">{{ player.playerName }}</td>
+        <td class="name-cell">{{ player.goals }}</td>
+        <td class="name-cell">{{ player.assists }}</td>
+      </tr>
+
+      
+      <tr *ngIf="!loading && !errorMessage && players.length === 0">
+        <td colspan="4" class="text-center py-4">
+          <div class="text-muted">No player data available</div>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
-
