@@ -1,42 +1,112 @@
 # Match Analytics Lite — Starter Template
 
-Welcome to the Match Analytics Lite 24-hour internship test.
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3-green)
+![Angular](https://img.shields.io/badge/Angular-18-red)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
+![Chart.js](https://img.shields.io/badge/Chart.js-4.5.0-orange)
 
-## Goal (24 hours)
-Build a minimal Match Analytics prototype for **one match**.
-You implement backend (Spring Boot), frontend (Angular), and simple visualizations.
-Keep it simple: focus on correctness, meaningful charts, and documentation.
+Welcome to **Match Analytics Lite**, a starter template for managing football match data with a full-stack Java Spring Boot + Angular application.
 
-## Minimal requirements (must)
-1. Implement the following backend endpoints:
-   - GET /api/match  → returns a single match JSON (players + events)
-   - POST /api/event → add an event (goal, pass, tackle)
-   - GET /api/player/{id} → return player summary (goals, assists, formRating)
+---
 
-2. Frontend: single "Match Dashboard" page with:
-   - Players table (position, goals, assists, formRating)
-   - A chart (bar chart or simple heatmap) showing events aggregated per player or zone
-   - Event timeline list (chronological)
+## Table of Contents
 
-3. Seed data: use `seed/match.json` as initial data to implement GET /api/match.
+* [Features](#features)
+* [Back End](#back-end)
+* [Front End](#front-end)
+* [Prerequisites](#prerequisites)
+* [Setup and Run](#setup-and-run)
+* [Notes](#notes)
 
-4. README must include:
-   - How to run the project (docker optional)
-   - Which AI tools (if any) were used
-   - Short explanation of the formRating formula and assumptions
+---
 
-## Seed data
-See `seed/match.json` for a minimal example dataset.
+## Features
 
-## Submission
-- Fork this repo via GitHub Classroom (you will receive a link).
-- Push your implementation to your fork within **24 hours**.
-- Document any incomplete parts in your README.
+* REST API for **Match**, **Player**, and **Event** entities
+* Player statistics table (name, goals, assists)
+* Chart comparison of player goals and assists using Chart.js
+* Full-stack integration with Angular front end and Spring Boot back end
 
-## Notes for reviewers
-Keep the evaluation pragmatic: this is a 24h test. We prioritize:
-- Working endpoints
-- Meaningful visualization
-- Clear README & commit history
+---
 
-Good luck!
+## Back End
+
+Built with **Java Spring Boot 3** and **PostgreSQL**.
+
+### Endpoints
+
+* `/players` – List all players with stats
+* `/matches` – List all matches
+* `/events` – List all events for matches/players
+
+### Setup
+
+1. Configure your database in `application.properties`:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/your_db
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+```
+
+2. Install dependencies:
+
+```bash
+mvn clean install
+```
+
+3. Run the API:
+
+```bash
+mvn spring-boot:run
+```
+
+4. Test endpoints at: [http://localhost:8080](http://localhost:8080)
+
+---
+
+## Front End
+
+Implemented with **Angular 18**.
+
+### Features
+
+* Table showing players with their statistics (name, goals, assists)
+* Bar chart comparing players’ goals and assists
+* Uses **Chart.js 4.5.0**
+
+### Setup
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run the front end:
+
+```bash
+ng serve
+```
+
+3. Open the app at: [http://localhost:4200](http://localhost:4200)
+
+---
+
+## Prerequisites
+
+* Java 17+
+* Maven 3+
+* Node.js 18+ and npm
+* PostgreSQL 15+
+
+---
+
+## Notes / Limitations
+
+Some features could not be fully implemented due to time constraints:
+
+* Dockerization of back-end and front-end
+* Angular signals for dynamic data
+* Multiple charts for extended statistics
