@@ -2,8 +2,10 @@ package com.example.Match.Analytics.Lite.player;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Query("""
@@ -19,4 +21,8 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     """)
 
     List<PlayerStatsResponse> findPlayersWithGoalsAndAssists();
+
+
+    @Query("SELECT p FROM Player p LEFT JOIN FETCH p.events WHERE p.id = :id")
+    Optional<Player> findPlayerWithEvents(@Param("id") Long id);
 }

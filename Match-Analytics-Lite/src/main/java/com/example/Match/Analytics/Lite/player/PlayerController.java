@@ -3,6 +3,7 @@ package com.example.Match.Analytics.Lite.player;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,11 +22,11 @@ public class PlayerController {
         return playerService.addPlayer(player);
     }
 
-    @GetMapping(path="/{id}")
-    public Player getPlayer(@PathVariable Long id) {
-        return playerService.getPlayer(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<PlayerResponse> getPlayer(@PathVariable Long id) {
+        PlayerResponse response = playerService.getPlayerWithEvents(id);
+        return ResponseEntity.ok(response);
     }
-
     @GetMapping(path="/stats")
     public List<PlayerStatsResponse> getPlayerStats() {return playerService.getPlayerStats();}
 }
