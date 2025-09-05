@@ -1,6 +1,7 @@
 package com.example.Match.Analytics.Lite.event;
 
 import com.example.Match.Analytics.Lite.player.Player;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Event {
     private EventType type;
     @ManyToOne
     @JoinColumn(name = "player_id")
+    @JsonManagedReference
     private Player player;
     @Embedded
     private Meta meta;
