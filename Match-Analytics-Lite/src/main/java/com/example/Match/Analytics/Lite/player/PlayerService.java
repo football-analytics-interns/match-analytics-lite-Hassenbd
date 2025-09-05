@@ -8,4 +8,5 @@ public interface PlayerService {
     public Player addPlayer(Player player);
     public List<PlayerStatsResponse> getPlayerStats();
     public PlayerResponse getPlayerWithEvents(Long id);
+
 }
