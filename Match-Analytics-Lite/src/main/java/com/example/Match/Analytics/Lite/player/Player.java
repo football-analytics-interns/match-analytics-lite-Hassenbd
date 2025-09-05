@@ -1,11 +1,12 @@
 package com.example.Match.Analytics.Lite.player;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.Match.Analytics.Lite.event.Event;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,4 +19,6 @@ public class Player {
     private String name;
     private String team;
     private String position;
+    @OneToMany(mappedBy = "player")
+    private List<Event> events = new ArrayList<>();
 }

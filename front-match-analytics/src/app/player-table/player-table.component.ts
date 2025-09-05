@@ -11,20 +11,35 @@ import { CommonModule } from '@angular/common';
   styleUrl: './player-table.component.css'
 })
 export class PlayerTableComponent implements OnInit{
-  players:Player[]=[
-    {id:1,name:"hasse",team:"est",position:"milieu"},
-    {id:3,name:"hasse",team:"est",position:"milieu"},
-    {id:2,name:"hasse",team:"est",position:"milieu"},
-  ];
+  players:Player[]=[];
+  loading = false;
+  errorMessage = '';
+
+  constructor(private readonly playerService:PlayerService){}
 
 
   ngOnInit(): void {
-    // this.playerService.getAllPlayers().subscribe((players)=>{
-    //   this.players=players
-    // })
+    this.loadData();
   }
 
-  constructor(private readonly playerService:PlayerService){}
+  loadData(): void {
+    this.loading = true;
+    this.errorMessage = '';
+
+    this.playerService.getAllPlayers().subscribe({
+      next: (players) => {
+        this.players = players;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Erreur API', err);
+        this.errorMessage = 'Impossible de charger les joueurs.';
+        this.loading = false;
+      }
+    });
+  }
+
+
 
 
 }

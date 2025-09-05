@@ -13,7 +13,7 @@ export class PlayerService {
    url:string="http://localhost:8080/";
 
    public getAllPlayers():Observable<Player[]>{
-    const urlPlayers=`${this.url}/player`;
+    const urlPlayers=`${this.url}player/stats`;
     return this.http.get<Player[]>(urlPlayers);
    }
 }

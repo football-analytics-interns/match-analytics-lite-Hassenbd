@@ -1,9 +1,12 @@
 package com.example.Match.Analytics.Lite.event;
 
+import com.example.Match.Analytics.Lite.player.PlayerStatsResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +26,5 @@ public class EventController {
     public Event getEvent(@PathVariable Long id) {
         return eventService.getEventById(id);
     }
+
 }

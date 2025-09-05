@@ -4,19 +4,23 @@
       <tr>
         <th>IDENTIFIER</th>
         <th>NAME</th>
-        <th>TEAM</th>
-        <th>POSITION</th>
+        <th>GOALS</th>
+        <th>ASSISTS</th>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <div *ngIf="loading">Chargement...</div>
+          <div *ngIf="errorMessage">{{ errorMessage }}</div>
+      </tr>
       <tr *ngFor="let player of players">
-        <td class="fw-bold identifier-cell">{{ player.id }}</td>
-        <td class="name-cell">{{ player.name }} </td>
+        <td class="fw-bold identifier-cell">{{ player.playerId }}</td>
+        <td class="name-cell">{{ player.playerName }} </td>
         <td class="name-cell">
-          {{ player.team }}
+          {{ player.goals }}
         </td>
         <td class="name-cell">
-          {{player.position}}
+          {{player.assists}}
         </td>
 
       </tr>
